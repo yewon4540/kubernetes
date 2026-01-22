@@ -1,0 +1,40 @@
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: infra-server-1
+  namespace: yewon
+  labels:
+    kubernetes.io/service-name: infra-server
+
+addressType: IPv4
+
+ports:
+  # qdrant
+  - name: qdrant-6333
+    protocol: TCP
+    port: 6333
+  - name: qdrant-6334
+    protocol: TCP
+    port: 6334
+
+  # minio
+  - name: minio-9000
+    protocol: TCP
+    port: 9000
+  - name: minio-9001
+    protocol: TCP
+    port: 9001
+
+  # redis
+  - name: redis-6379
+    protocol: TCP
+    port: 6379
+
+  # postgres
+  - name: pg-5432
+    protocol: TCP
+    port: 5432
+
+endpoints:
+  - addresses:
+      - "10.10.10.111"
